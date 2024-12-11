@@ -17,6 +17,9 @@
       },{
       "source": "/a",
       "destination": "/a.html"
+      },{
+      "source": "/as",
+      "destination": "/s.html"
       },
       {
       "source": "/u",
