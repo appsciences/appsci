@@ -24,6 +24,10 @@
       {
       "source": "/u",
       "destination": "/u.html"
+      },
+      {
+      "source": "/l",
+      "destination": "/l.html"
       }
     ]
   }
