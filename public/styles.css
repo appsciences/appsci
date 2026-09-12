@@ -870,3 +870,110 @@ details[open] > summary::after {
     transition: none !important;
   }
 }
+
+/* Community leads the page; the project index keeps the original visual language. */
+.hero:has(.community-promo) {
+  min-height: auto;
+  justify-content: flex-start;
+  padding-top: 8px;
+  padding-bottom: 64px;
+}
+.hero > .headline {
+  font-size: clamp(22px, 3vw, 28px);
+}
+.community-promo {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  align-items: center;
+  gap: 48px;
+  margin: 32px 0 10px;
+  padding: 44px 0;
+  border-top: 2px solid var(--accent);
+  border-bottom: 1px dashed var(--dash);
+}
+.community-promo h2 {
+  color: var(--accent-bright);
+  font-size: clamp(46px, 6vw, 68px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.055em;
+  max-width: 9ch;
+}
+.community-copy h3 {
+  color: var(--fg-bright);
+  font-size: 18px;
+  line-height: 1.45;
+  font-weight: 500;
+}
+.manifesto-summary {
+  color: var(--fg-dim);
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 1.75;
+  max-width: 58ch;
+}
+.community-promo .act {
+  margin-top: 24px;
+}
+.community-promo .community-cta {
+  background: var(--accent-bright);
+  border-color: var(--accent-bright);
+  color: var(--bg);
+  font-weight: 500;
+}
+.community-promo .community-cta:hover {
+  background: var(--fg-bright);
+  border-color: var(--fg-bright);
+  color: var(--bg);
+}
+.manifesto-link {
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.nav .community-nav {
+  flex-basis: 100%;
+  font-size: 15px;
+  color: var(--accent-bright);
+}
+.assistant-native {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--dash);
+}
+.assistant-native h4 {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent-bright);
+}
+.assistant-native p {
+  font-size: 12px;
+  line-height: 1.7;
+  margin-top: 9px;
+  color: var(--fg-dim);
+}
+.assistant-native a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@media (max-width: 720px) {
+  .community-promo {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    margin-top: 24px;
+    padding: 32px 0;
+  }
+  .community-promo h2 {
+    font-size: clamp(44px, 11vw, 64px);
+    max-width: 11ch;
+  }
+  .community-copy h3 {
+    font-size: 17px;
+  }
+  .manifesto-summary {
+    font-size: 13px;
+  }
+  .community-promo .act {
+    gap: 20px;
+  }
+}
