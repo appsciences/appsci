@@ -1,0 +1,19 @@
+{
+  "name": "app-sciences-site",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "format": "prettier --write public/index.html public/styles.css public/landing.js tests playwright.config.js package.json .htmlvalidate.json .github/workflows/*.yml spec.md README.md",
+    "format:check": "prettier --check public/index.html public/styles.css public/landing.js tests playwright.config.js package.json .htmlvalidate.json .github/workflows/*.yml spec.md README.md",
+    "validate": "html-validate public/index.html && node --check public/landing.js",
+    "test": "playwright test",
+    "check": "npm run format:check && npm run validate && npm test",
+    "preview": "python3 -m http.server 4173 --bind 127.0.0.1 --directory public"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "html-validate": "^11.15.0",
+    "prettier": "^3.9.6"
+  }
+}
