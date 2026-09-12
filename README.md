@@ -32,6 +32,8 @@ npm run check
 
 Checks cover formatting, HTML validity, JavaScript syntax, and desktop/mobile Chromium/WebKit browser flows. To check a deployed Firebase preview, set `PLAYWRIGHT_BASE_URL` to its URL and run `npm test`.
 
+The homepage's stylesheet and script URLs include versions derived from their contents so returning visitors receive updated assets after a release. `npm run format` refreshes those versions after formatting; `npm run check` rejects stale versions.
+
 Both Firebase workflows run the shared Site checks workflow before deploying. PRs receive a preview; a push to `main` deploys to production only after checks pass. Engineering review, exact-build QA, and production authorization are separate decisions; record them on the PR before merging.
 
 ## Deploy manually

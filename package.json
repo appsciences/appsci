@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "format": "prettier --write public/index.html public/styles.css public/landing.js tests playwright.config.js package.json .htmlvalidate.json .github/workflows/*.yml spec.md README.md",
-    "format:check": "prettier --check public/index.html public/styles.css public/landing.js tests playwright.config.js package.json .htmlvalidate.json .github/workflows/*.yml spec.md README.md",
+    "format": "prettier --write public/index.html public/styles.css public/landing.js scripts tests playwright.config.js package.json .htmlvalidate.json .github/workflows/*.yml spec.md README.md && node scripts/version-assets.mjs",
+    "format:check": "prettier --check public/index.html public/styles.css public/landing.js scripts tests playwright.config.js package.json .htmlvalidate.json .github/workflows/*.yml spec.md README.md && node scripts/version-assets.mjs --check",
     "validate": "html-validate public/index.html && node --check public/landing.js",
     "test": "playwright test",
     "check": "npm run format:check && npm run validate && npm test",
