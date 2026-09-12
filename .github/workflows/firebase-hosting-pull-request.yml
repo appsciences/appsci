@@ -8,7 +8,10 @@ permissions:
   contents: read
   pull-requests: write
 jobs:
+  checks:
+    uses: ./.github/workflows/site-checks.yml
   build_and_preview:
+    needs: checks
     if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
     runs-on: ubuntu-latest
     steps:
