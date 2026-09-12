@@ -27,6 +27,7 @@ Copy is grounded in the user's prior SDLC/discovery/spec-coverage discussion, th
 ## Behavior and accessibility
 
 - All copy, navigation, stages, and previews are present in HTML and usable with JavaScript disabled.
+- Homepage stylesheet and script URLs change when their contents change so returning visitors receive the current assets. Formatting refreshes their content-derived versions, and release checks reject stale versions.
 - Community copy and all nine assistant-native project descriptions also work without JavaScript. The community headline remains more prominent than the brand heading on desktop and mobile; new content must not cause horizontal overflow or obscure navigation.
 - Product index anchors navigate to named sections; native disclosures expose methodology details.
 - A visible-on-focus skip link moves keyboard focus to the main content.
