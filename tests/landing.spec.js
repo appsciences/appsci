@@ -154,6 +154,27 @@ test("concept sketches fit their frames on short narrow screens", async ({
   }
 });
 
+test("the shortcut bar advertises only keys the page implements", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const bar = page.getByRole("group", { name: "Keyboard shortcuts" });
+  await expect(bar).toContainText("move");
+  await expect(bar).toContainText("jump");
+  // The bar used to promise "follow link", which nothing implemented: j/k focus an
+  // <article tabindex="-1">, not a link, and the items carry no per-item destination.
+  // See #22 — the bar and the handler must not drift apart again.
+  await expect(bar).not.toContainText("follow link");
+
+  // Enter on a focused item must stay inert rather than navigating somewhere invented.
+  await page.keyboard.press("j");
+  const first = page.getByRole("article", { name: "spec-dude", exact: true });
+  await expect(first).toBeFocused();
+  const before = page.url();
+  await page.keyboard.press("Enter");
+  expect(page.url()).toBe(before);
+});
+
 test("the original client entries and product keyboard navigation remain usable", async ({
   page,
 }) => {

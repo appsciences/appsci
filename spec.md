@@ -31,7 +31,8 @@ Copy is grounded in the user's prior SDLC/discovery/spec-coverage discussion, th
 - Community copy and all nine assistant-native project descriptions also work without JavaScript. The community headline remains more prominent than the brand heading on desktop and mobile; new content must not cause horizontal overflow or obscure navigation.
 - Product index anchors navigate to named sections; native disclosures expose methodology details.
 - A visible-on-focus skip link moves keyboard focus to the main content.
-- `j`/`k` move through products and methodology; `1`–`9` select products. Native link and disclosure activation must not be intercepted. Modified shortcuts and editable controls retain their browser behavior.
+- `j`/`k` move through products and methodology; `1`–`9` select products — the first nine of the ten `data-path` sections, so methodology is reachable by `j`/`k` only. Native link and disclosure activation must not be intercepted. Modified shortcuts and editable controls retain their browser behavior.
+- The shortcut bar lists **only keys the page implements**: `j`/`k` and `1`–`9`. `Enter` is not a feed shortcut — the focused element is an `<article tabindex="-1">`, not a link, and the items carry no per-item destination — so the bar must not advertise it. Tab-to-a-link then `Enter` is ordinary browser behavior and needs no mention (#22).
 - Reduced motion disables smooth scrolling, scroll snapping, and motion effects.
 - Content fits 320px through desktop widths without horizontal overflow. On mobile, product sections stack naturally and the fixed shortcut bar does not obscure the footer.
 
