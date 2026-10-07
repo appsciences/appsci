@@ -37,7 +37,7 @@ test("all nine projects explain assistant-native formats and prompting to evolve
   page,
 }) => {
   await page.goto("/");
-  const projects = page.getByRole("article");
+  const projects = page.locator("#apps article, #client-work article");
   await expect(projects).toHaveCount(9);
   for (const project of await projects.all()) {
     const native = project.locator(".assistant-native");
@@ -55,6 +55,51 @@ test("all nine projects explain assistant-native formats and prompting to evolve
     ).toHaveAttribute("href", "https://postui.org/");
     await expect(project.getByRole("link")).toHaveCount(1);
   }
+});
+
+test("a community section lists postui.org after client work and joins keyboard navigation", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const community = page.getByRole("region", {
+    name: "Community",
+    exact: true,
+  });
+  const entry = community.getByRole("article", {
+    name: "postui.org",
+    exact: true,
+  });
+  await expect(entry).toBeVisible();
+  await expect(entry).toHaveAttribute("data-path", "~/community/postui.org");
+  await expect(entry).toContainText("working group");
+  await expect(entry).toContainText("teardowns");
+  await expect(entry).toContainText("pilots");
+  await expect(
+    entry.getByRole("link", { name: "Visit postui.org" }),
+  ).toHaveAttribute("href", "https://postui.org/");
+  await expect(
+    entry.getByRole("link", { name: "Read the manifesto" }),
+  ).toHaveAttribute("href", "https://postui.org/manifesto");
+
+  const order = await page.evaluate(() =>
+    ["client-work", "community-projects", "methodology"].map(
+      (id) => document.getElementById(id).getBoundingClientRect().top,
+    ),
+  );
+  expect(order[0]).toBeLessThan(order[1]);
+  expect(order[1]).toBeLessThan(order[2]);
+
+  const nav = page.getByRole("navigation", { name: "Main" });
+  await expect(nav).toContainText("community/");
+  await expect(
+    nav.getByRole("link", { name: "postui.org", exact: true }),
+  ).toHaveAttribute("href", "#postui-org");
+
+  // From a fresh page, k wraps to methodology; the next k lands on the community entry.
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.keyboard.press("k");
+  await page.keyboard.press("k");
+  await expect(entry).toBeFocused();
 });
 
 test("PostUI community leads the page with prominent type and a grounded manifesto summary", async ({

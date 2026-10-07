@@ -357,6 +357,20 @@ a:hover {
   text-wrap: pretty;
 }
 
+.ic-list {
+  list-style: none;
+  color: var(--fg-dim);
+  font-size: 13px;
+  margin-top: 14px;
+  max-width: 50ch;
+  display: grid;
+  gap: 8px;
+}
+.ic-list b {
+  color: var(--fg-bright);
+  font-weight: 400;
+}
+
 .act {
   margin-top: 18px;
   display: flex;
