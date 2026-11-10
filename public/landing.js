@@ -47,7 +47,9 @@ document.addEventListener("keydown", (event) => {
 
 const observer = new IntersectionObserver(
   () => {
-    const focusLine = window.innerHeight * 0.4;
+    // Compact entries are shorter than the viewport, so keep the line near the
+    // top: a section scrolled to the top must still be the one under it.
+    const focusLine = Math.min(window.innerHeight * 0.4, 120);
     const active = sections.findIndex((section) => {
       const box = section.getBoundingClientRect();
       return box.top <= focusLine && box.bottom > focusLine;

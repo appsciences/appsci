@@ -36,6 +36,7 @@ test("all nine projects have a one-line description and a more info link to nbin
     await expect(project.locator(".ic-blurb")).toHaveCount(1);
     await expect(project.locator(".assistant-native")).toHaveCount(0);
     await expect(project.getByRole("link")).toHaveCount(1);
+    await expect(project.locator(".pvwrap")).toHaveCount(0);
     const anchors = {
       "auth-dude": "#auth-dude",
       notedude: "#note-dude",
@@ -168,25 +169,6 @@ test("navigation and native disclosures expose the methodology and separate appr
     await expect(
       methodology.getByRole("heading", { name, exact: true }),
     ).toBeVisible();
-  }
-});
-
-test("concept sketches fit their frames on short narrow screens", async ({
-  page,
-}) => {
-  await page.setViewportSize({ width: 320, height: 568 });
-  await page.goto("/");
-  for (const frame of await page.locator(".pv:has(.sketch)").all()) {
-    const bounds = await frame.evaluate((element) => {
-      const frame = element.getBoundingClientRect();
-      const sketch = element.querySelector(".sketch").getBoundingClientRect();
-      return {
-        top: sketch.top - frame.top,
-        bottom: frame.bottom - sketch.bottom,
-      };
-    });
-    expect(bounds.top).toBeGreaterThanOrEqual(0);
-    expect(bounds.bottom).toBeGreaterThanOrEqual(0);
   }
 });
 
