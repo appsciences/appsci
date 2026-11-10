@@ -36,9 +36,15 @@ test("all nine projects have a one-line description and a more info link to nbin
     await expect(project.locator(".ic-blurb")).toHaveCount(1);
     await expect(project.locator(".assistant-native")).toHaveCount(0);
     await expect(project.getByRole("link")).toHaveCount(1);
+    const anchors = {
+      "auth-dude": "#auth-dude",
+      notedude: "#note-dude",
+      todude: "#to-dude",
+    };
+    const id = await project.getAttribute("id");
     await expect(
       project.getByRole("link", { name: "More info", exact: true }),
-    ).toHaveAttribute("href", "https://nbino.studio/");
+    ).toHaveAttribute("href", `https://nbino.studio/${anchors[id] ?? ""}`);
   }
 });
 
