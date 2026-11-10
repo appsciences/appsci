@@ -22,38 +22,29 @@ test("visitors can discover all six work tools and their development stages", as
     await expect(
       app.getByText(/Exploration|In development|Prototype/),
     ).toBeVisible();
-    await expect(
-      app.getByRole("link", { name: "postui.org", exact: true }),
-    ).toHaveAttribute("href", "https://postui.org/");
+    await expect(app.locator(".ic-blurb")).toHaveCount(1);
   }
-  await expect(apps.getByText(/specification coverage/i)).toBeVisible();
-  await expect(apps.getByText(/authorization/i)).toBeVisible();
-  await expect(
-    apps.locator(".ic-blurb").filter({ hasText: /walkthroughs/i }),
-  ).toBeVisible();
 });
 
-test("all nine projects explain assistant-native formats and prompting to evolve the app", async ({
+test("all nine projects have a one-line description and a more info link to nbino.studio", async ({
   page,
 }) => {
   await page.goto("/");
   const projects = page.locator("#apps article, #client-work article");
   await expect(projects).toHaveCount(9);
   for (const project of await projects.all()) {
-    const native = project.locator(".assistant-native");
-    await expect(
-      native.getByRole("heading", { name: "Assistant-native", exact: true }),
-    ).toBeVisible();
-    await expect(native).toContainText("Claude plugin");
-    await expect(native).toContainText("ChatGPT plugin");
-    await expect(native).toContainText("standalone assistant-native web app");
-    await expect(native).toContainText(
-      "Use a prompt to run workflows and modify or update the app",
-    );
-    await expect(
-      native.getByRole("link", { name: "postui.org", exact: true }),
-    ).toHaveAttribute("href", "https://postui.org/");
+    await expect(project.locator(".ic-blurb")).toHaveCount(1);
+    await expect(project.locator(".assistant-native")).toHaveCount(0);
     await expect(project.getByRole("link")).toHaveCount(1);
+    const anchors = {
+      "auth-dude": "#auth-dude",
+      notedude: "#note-dude",
+      todude: "#to-dude",
+    };
+    const id = await project.getAttribute("id");
+    await expect(
+      project.getByRole("link", { name: "More info", exact: true }),
+    ).toHaveAttribute("href", `https://nbino.studio/${anchors[id] ?? ""}`);
   }
 });
 
@@ -304,7 +295,7 @@ test("the page remains usable without JavaScript, with no broken local resources
   await expect(
     page.getByRole("heading", { name: "AI is the new UI.", exact: true }),
   ).toBeVisible();
-  await expect(page.locator("article .assistant-native")).toHaveCount(9);
+  await expect(page.locator("article .ic-blurb")).toHaveCount(10);
   for (const href of await page
     .locator('a[href^="#"]')
     .evaluateAll((links) => links.map((link) => link.getAttribute("href")))) {
