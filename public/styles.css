@@ -119,6 +119,11 @@ a:hover {
 .headline .b {
   color: var(--fg-bright);
 }
+.subtitle {
+  margin: 10px 0 0;
+  font-size: clamp(14px, 1.8vw, 18px);
+  color: var(--fg-dim);
+}
 .caret {
   display: inline-block;
   width: 9px;

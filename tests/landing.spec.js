@@ -49,6 +49,18 @@ test("all nine projects have a one-line description and a more info link to nbin
   }
 });
 
+test("the hero title and subtitle state the delivery path", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    "Discovery → AI SDLC → Production",
+  );
+  await expect(page.locator(".hero > .subtitle")).toHaveText(
+    "AI SDLC Orchestration Rockstars",
+  );
+});
+
 test("a community section lists postui.org after client work and joins keyboard navigation", async ({
   page,
 }) => {

@@ -44,3 +44,7 @@ Copy is grounded in the user's prior SDLC/discovery/spec-coverage discussion, th
 - Run Playwright in Chromium and WebKit at desktop and mobile sizes, including keyboard navigation, disclosure controls, no-JavaScript use, local resources, anchors, content/stages, and narrow layouts.
 - Both Firebase PR preview and main deployment depend on the same passing checks. Existing Firebase routes and other public files stay unchanged.
 - Record exact-commit preview QA on the PR. The separate user-authorized publishing task handles engineering review, release authorization, merge, and production verification. Automated checks do not imply independent human approval.
+
+## Hero title
+
+The hero `h1` reads "Discovery → AI SDLC → Production" with the subtitle "AI SDLC Orchestration Rockstars" directly beneath it. The community promo's "AI is the new UI." headline stays larger than the title.
