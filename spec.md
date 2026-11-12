@@ -11,6 +11,7 @@ Make App Sciences' business-app lineup and SDLC Orchestration approach discovera
 ## Content
 
 - Feature spec-dude (living intent, specification coverage and ambiguity), auth-dude (authorization policies and explainable access), and training-dude (training from approved knowledge and software changes).
+- Lead the apps group with sdlc-dude (Exploration): an assistant-native enterprise app that examines an organization's SDLC and repository and identifies gaps — specs, tests first, CI/CD, guardrails, multi-model reviews, hallucination monitoring, deployment safeguards. Its "More info" link goes to the nbino.studio root until a listing exists there.
 - Include crm-dude, notedude, and todude as relevant business/productivity tools.
 - Preserve the development stage labels: Exploration for spec-dude/training-dude, In development for auth-dude/notedude, Prototype for crm-dude/todude. Format availability is supplied by the user in the follow-up; no plugin marketplace or installation URLs are invented.
 - Every app and client-work listing is a single one-line description plus a "More info" link to `https://nbino.studio/` (deep-linked to the nbino.studio anchor where the app is listed there — `#note-dude`, `#to-dude`, `#auth-dude` — otherwise the site root). The per-project assistant-native block was removed; the community promo still carries the assistant-native positioning and links to `https://postui.org/`.
@@ -32,7 +33,7 @@ Copy is grounded in the user's prior SDLC/discovery/spec-coverage discussion, th
 - Community copy and all nine assistant-native project descriptions also work without JavaScript. The community headline remains more prominent than the brand heading on desktop and mobile; new content must not cause horizontal overflow or obscure navigation.
 - Product index anchors navigate to named sections; native disclosures expose methodology details.
 - A visible-on-focus skip link moves keyboard focus to the main content.
-- `j`/`k` move through products and methodology; `1`–`9` select products — the first nine of the eleven `data-path` sections, so the postui.org community entry and methodology are reachable by `j`/`k` only. Native link and disclosure activation must not be intercepted. Modified shortcuts and editable controls retain their browser behavior.
+- `j`/`k` move through products and methodology; `1`–`9` select products — the first nine of the twelve `data-path` sections (sdlc-dude through algotrade), so predictmarket, the postui.org community entry and methodology are reachable by `j`/`k` only. Native link and disclosure activation must not be intercepted. Modified shortcuts and editable controls retain their browser behavior.
 - The shortcut bar lists **only keys the page implements**: `j`/`k` and `1`–`9`. `Enter` is not a feed shortcut — the focused element is an `<article tabindex="-1">`, not a link, and the items carry no per-item destination — so the bar must not advertise it. Tab-to-a-link then `Enter` is ordinary browser behavior and needs no mention (#22).
 - Reduced motion disables smooth scrolling, scroll snapping, and motion effects.
 - Content fits 320px through desktop widths without horizontal overflow. On mobile, product sections stack naturally and the fixed shortcut bar does not obscure the footer.
