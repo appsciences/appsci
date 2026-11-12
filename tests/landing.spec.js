@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-test("visitors can discover all six work tools and their development stages", async ({
+test("visitors can discover all seven work tools and their development stages", async ({
   page,
 }) => {
   await page.goto("/");
@@ -8,6 +8,7 @@ test("visitors can discover all six work tools and their development stages", as
     name: "Apps for the work behind the work",
   });
   for (const name of [
+    "sdlc-dude",
     "spec-dude",
     "auth-dude",
     "training-dude",
@@ -26,16 +27,17 @@ test("visitors can discover all six work tools and their development stages", as
   }
 });
 
-test("all nine projects have a one-line description and a more info link to nbino.studio", async ({
+test("all ten projects have a one-line description and a more info link to nbino.studio", async ({
   page,
 }) => {
   await page.goto("/");
   const projects = page.locator("#apps article, #client-work article");
-  await expect(projects).toHaveCount(9);
+  await expect(projects).toHaveCount(10);
   for (const project of await projects.all()) {
     await expect(project.locator(".ic-blurb")).toHaveCount(1);
     await expect(project.locator(".assistant-native")).toHaveCount(0);
     await expect(project.getByRole("link")).toHaveCount(1);
+    await expect(project.locator(".pvwrap")).toHaveCount(0);
     const anchors = {
       "auth-dude": "#auth-dude",
       notedude: "#note-dude",
@@ -46,6 +48,21 @@ test("all nine projects have a one-line description and a more info link to nbin
       project.getByRole("link", { name: "More info", exact: true }),
     ).toHaveAttribute("href", `https://nbino.studio/${anchors[id] ?? ""}`);
   }
+});
+
+test("the hero title and subtitle state the delivery path", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    "Discovery → AI SDLC → Production",
+  );
+  await expect(page.locator(".hero > .kicker")).toHaveText(
+    "“Claude Cowork was built in 10 days. Your app should take less.”",
+  );
+  await expect(page.locator(".hero > .subtitle")).toHaveText(
+    "AI SDLC Orchestration Rockstars",
+  );
 });
 
 test("a community section lists postui.org after client work and joins keyboard navigation", async ({
@@ -171,25 +188,6 @@ test("navigation and native disclosures expose the methodology and separate appr
   }
 });
 
-test("concept sketches fit their frames on short narrow screens", async ({
-  page,
-}) => {
-  await page.setViewportSize({ width: 320, height: 568 });
-  await page.goto("/");
-  for (const frame of await page.locator(".pv:has(.sketch)").all()) {
-    const bounds = await frame.evaluate((element) => {
-      const frame = element.getBoundingClientRect();
-      const sketch = element.querySelector(".sketch").getBoundingClientRect();
-      return {
-        top: sketch.top - frame.top,
-        bottom: frame.bottom - sketch.bottom,
-      };
-    });
-    expect(bounds.top).toBeGreaterThanOrEqual(0);
-    expect(bounds.bottom).toBeGreaterThanOrEqual(0);
-  }
-});
-
 test("the shortcut bar advertises only keys the page implements", async ({
   page,
 }) => {
@@ -204,7 +202,7 @@ test("the shortcut bar advertises only keys the page implements", async ({
 
   // Enter on a focused item must stay inert rather than navigating somewhere invented.
   await page.keyboard.press("j");
-  const first = page.getByRole("article", { name: "spec-dude", exact: true });
+  const first = page.getByRole("article", { name: "sdlc-dude", exact: true });
   await expect(first).toBeFocused();
   const before = page.url();
   await page.keyboard.press("Enter");
@@ -227,19 +225,19 @@ test("the original client entries and product keyboard navigation remain usable"
   }
   await page.keyboard.press("j");
   await expect(
-    page.getByRole("article", { name: "spec-dude", exact: true }),
+    page.getByRole("article", { name: "sdlc-dude", exact: true }),
   ).toBeFocused();
   await page.keyboard.press("j");
   await expect(
-    page.getByRole("article", { name: "auth-dude", exact: true }),
+    page.getByRole("article", { name: "spec-dude", exact: true }),
   ).toBeFocused();
   await page.keyboard.press("k");
   await expect(
-    page.getByRole("article", { name: "spec-dude", exact: true }),
+    page.getByRole("article", { name: "sdlc-dude", exact: true }),
   ).toBeFocused();
   await page.keyboard.press("9");
   await expect(
-    page.getByRole("article", { name: "predictmarket", exact: true }),
+    page.getByRole("article", { name: "algotrade", exact: true }),
   ).toBeFocused();
   const link = page
     .getByRole("navigation")
@@ -295,7 +293,7 @@ test("the page remains usable without JavaScript, with no broken local resources
   await expect(
     page.getByRole("heading", { name: "AI is the new UI.", exact: true }),
   ).toBeVisible();
-  await expect(page.locator("article .ic-blurb")).toHaveCount(10);
+  await expect(page.locator("article .ic-blurb")).toHaveCount(11);
   for (const href of await page
     .locator('a[href^="#"]')
     .evaluateAll((links) => links.map((link) => link.getAttribute("href")))) {

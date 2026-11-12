@@ -11,13 +11,14 @@ Make App Sciences' business-app lineup and SDLC Orchestration approach discovera
 ## Content
 
 - Feature spec-dude (living intent, specification coverage and ambiguity), auth-dude (authorization policies and explainable access), and training-dude (training from approved knowledge and software changes).
+- Lead the apps group with sdlc-dude (Exploration): an assistant-native enterprise app that examines an organization's SDLC and repository and identifies gaps — specs, tests first, CI/CD, guardrails, multi-model reviews, hallucination monitoring, deployment safeguards. Its "More info" link goes to the nbino.studio root until a listing exists there.
 - Include crm-dude, notedude, and todude as relevant business/productivity tools.
 - Preserve the development stage labels: Exploration for spec-dude/training-dude, In development for auth-dude/notedude, Prototype for crm-dude/todude. Format availability is supplied by the user in the follow-up; no plugin marketplace or installation URLs are invented.
 - Every app and client-work listing is a single one-line description plus a "More info" link to `https://nbino.studio/` (deep-linked to the nbino.studio anchor where the app is listed there — `#note-dude`, `#to-dude`, `#auth-dude` — otherwise the site root). The per-project assistant-native block was removed; the community promo still carries the assistant-native positioning and links to `https://postui.org/`.
 - Feature the PostUI community near the top, before the project index, with a larger “AI is the new UI.” headline, an invitation to join the assistant-native community, and prominent links to `https://postui.org/` and `https://postui.org/manifesto`.
 - Ground the short community summary in the existing PostUI manifesto source: intent in place of unnecessary navigation, tools/data/actions, useful visual interfaces, state and permissions, and learning through public teardowns and working pilots. Source: the local PostUI project's `public/manifesto.html` and `public/index.html`; public-site retrieval timed out during implementation, so the summary does not claim a live-source freshness check.
 - Add a `community/` group to the project feed, after client work and before the methodology, with a postui.org entry (#24). It summarizes the working group and its three spaces (teardowns, pilots, the thesis) from the local PostUI project's `public/index.html`, links to `https://postui.org/` and `https://postui.org/manifesto`, and appears in the hero index as `community/ · postui.org`. It is a community, not a product, so it carries no stage badge or assistant-native format block. Its section id is `community-projects` because the hero promo already owns `#community`.
-- Label illustrative previews as concept sketches. Do not portray them as live apps or actual product screenshots.
+- App and client-work listings carry no preview panel or concept sketch; each is a compact entry (name, stage badge, one-liner, "More info"). The postui.org community entry keeps its placeholder tile.
 - Preserve vendorbuddy, algotrade, and predictmarket in the separate client-work group with their existing descriptions.
 - Explain the six stages: facilitated discovery, living specification, tests before implementation, independent model/engineering review, QA of an exact build, and release/training/feedback.
 - Distinguish engineering approval, QA acceptance, and release authorization.
@@ -32,7 +33,7 @@ Copy is grounded in the user's prior SDLC/discovery/spec-coverage discussion, th
 - Community copy and all nine assistant-native project descriptions also work without JavaScript. The community headline remains more prominent than the brand heading on desktop and mobile; new content must not cause horizontal overflow or obscure navigation.
 - Product index anchors navigate to named sections; native disclosures expose methodology details.
 - A visible-on-focus skip link moves keyboard focus to the main content.
-- `j`/`k` move through products and methodology; `1`–`9` select products — the first nine of the eleven `data-path` sections, so the postui.org community entry and methodology are reachable by `j`/`k` only. Native link and disclosure activation must not be intercepted. Modified shortcuts and editable controls retain their browser behavior.
+- `j`/`k` move through products and methodology; `1`–`9` select products — the first nine of the twelve `data-path` sections (sdlc-dude through algotrade), so predictmarket, the postui.org community entry and methodology are reachable by `j`/`k` only. Native link and disclosure activation must not be intercepted. Modified shortcuts and editable controls retain their browser behavior.
 - The shortcut bar lists **only keys the page implements**: `j`/`k` and `1`–`9`. `Enter` is not a feed shortcut — the focused element is an `<article tabindex="-1">`, not a link, and the items carry no per-item destination — so the bar must not advertise it. Tab-to-a-link then `Enter` is ordinary browser behavior and needs no mention (#22).
 - Reduced motion disables smooth scrolling, scroll snapping, and motion effects.
 - Content fits 320px through desktop widths without horizontal overflow. On mobile, product sections stack naturally and the fixed shortcut bar does not obscure the footer.
@@ -44,3 +45,9 @@ Copy is grounded in the user's prior SDLC/discovery/spec-coverage discussion, th
 - Run Playwright in Chromium and WebKit at desktop and mobile sizes, including keyboard navigation, disclosure controls, no-JavaScript use, local resources, anchors, content/stages, and narrow layouts.
 - Both Firebase PR preview and main deployment depend on the same passing checks. Existing Firebase routes and other public files stay unchanged.
 - Record exact-commit preview QA on the PR. The separate user-authorized publishing task handles engineering review, release authorization, merge, and production verification. Automated checks do not imply independent human approval.
+
+## Hero title
+
+The hero `h1` reads "Discovery → AI SDLC → Production" with the subtitle "AI SDLC Orchestration Rockstars" directly beneath it. The community promo's "AI is the new UI." headline stays larger than the title.
+
+A small, italic, dim quotation sits above the title as a kicker: “Claude Cowork was built in 10 days. Your app should take less.” It stays visually quieter than the title and subtitle.
