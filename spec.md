@@ -49,3 +49,5 @@ Copy is grounded in the user's prior SDLC/discovery/spec-coverage discussion, th
 ## Hero title
 
 The hero `h1` reads "Discovery → AI SDLC → Production" with the subtitle "AI SDLC Orchestration Rockstars" directly beneath it. The community promo's "AI is the new UI." headline stays larger than the title.
+
+A small, italic, dim quotation sits above the title as a kicker: “Claude Cowork was built in 10 days. Your app should take less.” It stays visually quieter than the title and subtitle.

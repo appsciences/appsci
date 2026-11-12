@@ -57,6 +57,9 @@ test("the hero title and subtitle state the delivery path", async ({
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
     "Discovery → AI SDLC → Production",
   );
+  await expect(page.locator(".hero > .kicker")).toHaveText(
+    "“Claude Cowork was built in 10 days. Your app should take less.”",
+  );
   await expect(page.locator(".hero > .subtitle")).toHaveText(
     "AI SDLC Orchestration Rockstars",
   );

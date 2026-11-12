@@ -119,6 +119,13 @@ a:hover {
 .headline .b {
   color: var(--fg-bright);
 }
+.kicker {
+  margin: 0;
+  font-size: clamp(12px, 1.5vw, 14px);
+  font-style: italic;
+  color: var(--fg-dimmer);
+  max-width: 64ch;
+}
 .subtitle {
   margin: 10px 0 0;
   font-size: clamp(14px, 1.8vw, 18px);
